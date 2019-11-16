@@ -33,7 +33,7 @@ Put the script on any object in the scene and you should see this:
 
 ..It's also draggable ;)
 
-#### A few more useful methods
+### A few more useful methods
 
 There are a few more useful methods that you can use to make things easy:
 
@@ -93,16 +93,16 @@ The result:
 
 ![image](docs/preview_extensions.gif)
 
-#### The Toolbar
+### The Toolbar
 
 Additionally, you can use a toolbar, which can automatically detect all active windows and display them in a toggleable strip. Just add the ToolbarGUI script to any object and it will be rendered on top edge of the screen.
 
 ![image](docs/toolbar.gif)
 
-#### Detecting if mouse over the UI
+### Detecting if mouse over the UI
 
 You can use GameWindow.IsMouseOverUI() to detect if the mouse is currently over any of the windows. This is useful for preventing the mouse "clicking through" the UI or disabling keyboard input, for example.
 
-#### Toggle all GUI with a key
+### Toggle all GUI with a key
 
 Another utility is the GUIToggler, with which you can toggle the entire GUI (default is \`). Just add the GUIToggler script to any GameObject.
