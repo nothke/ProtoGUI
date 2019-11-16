@@ -29,59 +29,75 @@ public class MyWindow : WindowGUI
 
 Put the script on any object in the scene and you should see this:
 
-// pic
+![image](docs/simple.gif)
+
+..It's also draggable ;)
 
 #### A few more useful methods
 
-There are more methods that you can use for very quick implementation.
+There are a few more useful methods that you can use to make things easy:
 
-A foldout can be used as a categorizer, it shows [+] when contracted and [-] when expanded
 ```
-bool showOptions;
+using Nothke.ProtoGUI;
 
-protected override void Window()
+public class WindowExample : WindowGUI
 {
-	Foldout("Options", ref showOptions, "This is the options foldout!");
+    public override string WindowLabel => "My Window";
 
-	if (showOptions)
-	{
-		option1 = Slider("Option 1", option1, 0, 1, "Option 1 is the best option");
-	}
+    bool toggleOn;
+    float floatInput = 0;
+    string stringInput = "";
+    float slider1Value;
+    int slider2Value;
+    float slider3Value;
+    bool showFoldout;
+
+    private void Start()
+    {
+        // Optional values you can override
+        windowRect.width = 400; // Sets initial window width
+        labelWidth = 90; // Sets label width of a Slider()
+        sliderNumberWidth = 50; // Sets width of the number in a Slider()
+        draggable = true;
+    }
+
+    protected override void Window()
+    {
+        Label("Here are some things:");
+        Button("Simple button!");
+
+        ToggleButton("Toggle", ref toggleOn);
+
+        Foldout("Foldout", ref showFoldout);
+
+        if (showFoldout)
+        {
+            Label("Some things in the foldout:");
+
+            // Inputs
+            floatInput = FloatField("Input fl", floatInput);
+            LabelField("Input str", ref stringInput);
+        }
+
+        // Float and int sliders:
+        slider1Value = Slider("Float", slider1Value, 0.0f, 1.0f, "F2");
+        slider2Value = Slider("Int", slider2Value, 0, 100);
+
+        // A "notched" float slider that will step by stepSize
+        slider3Value = Slider("Notched", slider3Value, 0, 2, 0.2f);
+    }
 }
 ```
 
-```
-Label("Text", ["Tooltip"]);
-```
+The result:
 
-```
-LabelField("Label", ref stringValue)
-```
-
-```
-FloatField("Label", value)
-```
-
-Slider comes in both float and int flavors:
-```
-Slider("Label", ref value, min, max, ["Tooltip"])
-```
-A "notched" float slider that will step by stepSize:
-```
-Slider("Label", ref value, min, max, stepSize, ["Tooltip"])
-```
-
-```
-Button("Label", ["Tooltip"])
-```
-
-```
-ToggleButton("Toggle this!", value)
-```
+![image](docs/preview_extensions.gif)
 
 #### The Toolbar
 
 Additionally, you can use a toolbar, which can automatically detect all active windows and display them in a toggleable strip. Just add the ToolbarGUI script to any object and it will be rendered on top edge of the screen.
+
+![image](docs/toolbar.gif)
 
 #### Detecting if mouse over the UI
 
