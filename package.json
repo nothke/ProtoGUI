@@ -1,0 +1,13 @@
+{
+  "name": "nothke.protogui",
+  "displayName": "ProtoGUI",
+  "version": "1.0.0",
+  "unity": "2018.1",
+  "description": "Simple, quick and good looking GUI windows, intended for prototyping and debugging. The package includes Inconsolata open source font by Raph Levien.",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nothke/ProtoGUI",
+    "revision": "a230101a6f3ccfadaaf5c852f1f14a7518588a43"
+  }
+}
