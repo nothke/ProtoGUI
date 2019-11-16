@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12001, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Skin
+  m_Name: ProtoGUISkin
   m_EditorClassIdentifier: 
   m_Font: {fileID: 12800000, guid: 1e169404bdf513945972b9d3aa0bf772, type: 3}
   m_box:
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_textField:
     m_Name: textfield
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 454ff5dbd0be43f45b66fbdcbc7c41b9, type: 3}
+      m_Background: {fileID: 2800000, guid: c9909c326cc5c2f44bab6c8b0f062fc8, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 1, g: 0.80689657, b: 0, a: 1}
     m_Hover:
@@ -887,7 +887,7 @@ MonoBehaviour:
   m_horizontalScrollbarLeftButton:
     m_Name: horizontalscrollbarleftbutton
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 454ff5dbd0be43f45b66fbdcbc7c41b9, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -954,7 +954,7 @@ MonoBehaviour:
   m_horizontalScrollbarRightButton:
     m_Name: horizontalscrollbarrightbutton
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 454ff5dbd0be43f45b66fbdcbc7c41b9, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -1222,7 +1222,7 @@ MonoBehaviour:
   m_verticalScrollbarDownButton:
     m_Name: verticalscrollbardownbutton
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 08527e9e7769a5f47ae88f7e6fa42b2d, type: 3}
+      m_Background: {fileID: 2800000, guid: 454ff5dbd0be43f45b66fbdcbc7c41b9, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
