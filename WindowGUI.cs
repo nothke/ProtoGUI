@@ -113,6 +113,7 @@ namespace Nothke.ProtoGUI
             return value;
         }
 
+        [System.Obsolete("Use non-ref return overload instead")]
         protected void FloatField(string label, ref float value)
         {
             GUILayout.BeginHorizontal();
@@ -128,7 +129,10 @@ namespace Nothke.ProtoGUI
             GUILayout.BeginHorizontal();
 
             GUILayout.Label(label, GUILayout.Width(labelWidth));
-            value = float.Parse(GUILayout.TextField(value.ToString()));
+            float prevValue = value;
+            if (float.TryParse(GUILayout.TextField(value.ToString()), out float newValue))
+                value = newValue;
+            else value = prevValue;
 
             GUILayout.EndHorizontal();
 
