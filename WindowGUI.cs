@@ -151,7 +151,7 @@ namespace Nothke.ProtoGUI
             TTip(label, tooltip);
 
             GUILayout.Label(value.ToString(), GUILayout.Width(sliderNumberWidth));
-            value = Mathf.RoundToInt(GUILayout.HorizontalSlider(value, min, max));
+            value = GUILayout.HorizontalSlider(value, min, max);
 
             GUILayout.EndHorizontal();
         }
@@ -184,14 +184,17 @@ namespace Nothke.ProtoGUI
 
         #region non-ref
 
-        protected float Slider(string label, float value, float min, float max, string tooltip = null)
+        protected float Slider(string label, float value, float min, float max, in string format = null, string tooltip = null)
         {
             GUILayout.BeginHorizontal();
 
             TTip(label, tooltip);
 
-            GUILayout.Label(value.ToString(), GUILayout.Width(sliderNumberWidth));
-            value = Mathf.RoundToInt(GUILayout.HorizontalSlider(value, min, max));
+            if (string.IsNullOrEmpty(format))
+                GUILayout.Label(value.ToString(), GUILayout.Width(sliderNumberWidth));
+            else
+                GUILayout.Label(value.ToString(format), GUILayout.Width(sliderNumberWidth));
+            value = GUILayout.HorizontalSlider(value, min, max);
 
             GUILayout.EndHorizontal();
 
