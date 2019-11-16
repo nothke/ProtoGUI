@@ -5,7 +5,6 @@ Simple, quick and good looking GUI windows for Unity, intended for prototyping a
 Use it as a Unity package, so don't put it in your assets folder, instead either put it in the Packages folder, or some other common folder (to which you can reference from different projects). Then and add it using the Package Manager "+" icon > "Add package from disk..".
 
 ### How To Use
-To be written..
 
 All you need to do is just inherit from WindowGUI, and then implement the required methods (ctrl + . in VS or Rider). Set the window title, and you can simply start using your window with GUILayout:
 
@@ -73,12 +72,12 @@ Button("Label", ["Tooltip"])
 ```
 
 ```
-ToggleButton("Toggle this!", vlaue)
+ToggleButton("Toggle this!", value)
 ```
 
 #### The Toolbar
 
-Additionally, you can use a toolbar, which can automatically detect all active windows and display them in a toggleable strip. Just add the ToolbarGUI script to any object and it will be.
+Additionally, you can use a toolbar, which can automatically detect all active windows and display them in a toggleable strip. Just add the ToolbarGUI script to any object and it will be rendered on top edge of the screen.
 
 #### Detecting if mouse over the UI
 
