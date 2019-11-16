@@ -1,7 +1,7 @@
 # ProtoGUI
 Simple, quick and good looking GUI windows for Unity, intended for prototyping and debugging. The package includes Inconsolata open source font by Raph Levien.
 
-Warning: It is basically a wrapper for Unity's IMGUI, so it is not very performant and GC friendly! The goal of it however is ease of use and is not recommended for production (although I am using it in (TBICCT)[https://nothke.itch.io/tower])
+Warning: It is basically a wrapper for Unity's IMGUI, so it is not very performant and GC friendly! The goal of it however is ease of use and is not recommended for production (although I am using it in [TBICCT](https://nothke.itch.io/tower))
 
 If you want something like this but more performant, you'll have to wait until Unity's UIElements become available for runtime.
 
