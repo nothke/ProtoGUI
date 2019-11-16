@@ -18,7 +18,7 @@ namespace Nothke.ProtoGUI
             get
             {
                 if (!_skin)
-                    _skin = Resources.Load("Skin") as GUISkin;
+                    _skin = Resources.Load<GUISkin>("ProtoGUISkin");
 
                 return _skin;
             }
