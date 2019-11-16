@@ -8,17 +8,18 @@ namespace Nothke.ProtoGUI
     {
         public override string WindowLabel { get { return "Toolbar"; } }
 
-        public int buttonWidth = 120;
 
+        public bool collectOnStart = true;
         public List<GameWindow> windows;
 
-        public bool collectOnStart;
+        public int buttonWidth = 120;
+        public int toolbarOffset = 400;
 
         private void Start()
         {
             draggable = false;
             windowRect.y = -30;
-            windowRect.x = 400;
+            windowRect.x = buttonWidth;
             windowRect.width = 0;
 
             if (collectOnStart)
