@@ -115,10 +115,7 @@ namespace Nothke.ProtoGUI
         {
             GUILayout.BeginHorizontal();
 
-            if (string.IsNullOrEmpty(tooltip))
-                GUILayout.Label(label, GUILayout.Width(labelWidth));
-            else
-                GUILayout.Label(new GUIContent(label, tooltip), GUILayout.Width(labelWidth));
+            TTip(label, tooltip);
 
             GUILayout.Label(value.ToString(), GUILayout.Width(sliderNumberWidth));
             value = Mathf.RoundToInt(GUILayout.HorizontalSlider(value, min, max));
@@ -130,10 +127,7 @@ namespace Nothke.ProtoGUI
         {
             GUILayout.BeginHorizontal();
 
-            if (string.IsNullOrEmpty(tooltip))
-                GUILayout.Label(label, GUILayout.Width(labelWidth));
-            else
-                GUILayout.Label(new GUIContent(label, tooltip), GUILayout.Width(labelWidth));
+            TTip(label, tooltip);
 
             GUILayout.Label(value.ToString(), GUILayout.Width(sliderNumberWidth));
             value = Mathf.RoundToInt(GUILayout.HorizontalSlider(value, min, max));
@@ -145,15 +139,20 @@ namespace Nothke.ProtoGUI
         {
             GUILayout.BeginHorizontal();
 
-            if (string.IsNullOrEmpty(tooltip))
-                GUILayout.Label(label, GUILayout.Width(labelWidth));
-            else
-                GUILayout.Label(new GUIContent(label, tooltip), GUILayout.Width(labelWidth));
+            TTip(label, tooltip);
 
             GUILayout.Label(value.ToString("F1"), GUILayout.Width(sliderNumberWidth));
             value = Mathf.Round(GUILayout.HorizontalSlider(value, min, max) / stepSize) * stepSize;
 
             GUILayout.EndHorizontal();
+        }
+
+        void TTip(in string label, in string tooltip)
+        {
+            if (string.IsNullOrEmpty(tooltip))
+                GUILayout.Label(label, GUILayout.Width(labelWidth));
+            else
+                GUILayout.Label(new GUIContent(label, tooltip), GUILayout.Width(labelWidth));
         }
 
         protected bool Button(string label)
