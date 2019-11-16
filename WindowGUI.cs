@@ -83,6 +83,8 @@ namespace Nothke.ProtoGUI
         protected float labelWidth = 100;
         protected float sliderNumberWidth = 60;
 
+        #region Labels and fields
+
         protected void Label(string label)
         {
             GUILayout.Label(label);
@@ -101,6 +103,16 @@ namespace Nothke.ProtoGUI
             GUILayout.EndHorizontal();
         }
 
+        protected string LabelField(string label, string value)
+        {
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(label, GUILayout.Width(labelWidth));
+            value = GUILayout.TextField(value);
+            GUILayout.EndHorizontal();
+
+            return value;
+        }
+
         protected void FloatField(string label, ref float value)
         {
             GUILayout.BeginHorizontal();
@@ -111,6 +123,23 @@ namespace Nothke.ProtoGUI
             GUILayout.EndHorizontal();
         }
 
+        protected float FloatField(string label, float value)
+        {
+            GUILayout.BeginHorizontal();
+
+            GUILayout.Label(label, GUILayout.Width(labelWidth));
+            value = float.Parse(GUILayout.TextField(value.ToString()));
+
+            GUILayout.EndHorizontal();
+
+            return value;
+        }
+
+        #endregion
+
+        #region Sliders
+
+        #region ref
         protected void Slider(string label, ref float value, float min, float max, string tooltip = null)
         {
             GUILayout.BeginHorizontal();
@@ -147,13 +176,56 @@ namespace Nothke.ProtoGUI
             GUILayout.EndHorizontal();
         }
 
-        void TTip(in string label, in string tooltip)
+        #endregion
+
+        #region non-ref
+
+        protected float Slider(string label, float value, float min, float max, string tooltip = null)
         {
-            if (string.IsNullOrEmpty(tooltip))
-                GUILayout.Label(label, GUILayout.Width(labelWidth));
-            else
-                GUILayout.Label(new GUIContent(label, tooltip), GUILayout.Width(labelWidth));
+            GUILayout.BeginHorizontal();
+
+            TTip(label, tooltip);
+
+            GUILayout.Label(value.ToString(), GUILayout.Width(sliderNumberWidth));
+            value = Mathf.RoundToInt(GUILayout.HorizontalSlider(value, min, max));
+
+            GUILayout.EndHorizontal();
+
+            return value;
         }
+
+        protected int Slider(string label, int value, float min, float max, string tooltip = null)
+        {
+            GUILayout.BeginHorizontal();
+
+            TTip(label, tooltip);
+
+            GUILayout.Label(value.ToString(), GUILayout.Width(sliderNumberWidth));
+            value = Mathf.RoundToInt(GUILayout.HorizontalSlider(value, min, max));
+
+            GUILayout.EndHorizontal();
+
+            return value;
+        }
+
+        protected float Slider(string label, float value, float min, float max, float stepSize, string tooltip = null)
+        {
+            GUILayout.BeginHorizontal();
+
+            TTip(label, tooltip);
+
+            GUILayout.Label(value.ToString("F1"), GUILayout.Width(sliderNumberWidth));
+            value = Mathf.Round(GUILayout.HorizontalSlider(value, min, max) / stepSize) * stepSize;
+
+            GUILayout.EndHorizontal();
+
+            return value;
+        }
+        #endregion
+
+        #endregion
+
+        #region Buttons
 
         protected bool Button(string label)
         {
@@ -182,6 +254,16 @@ namespace Nothke.ProtoGUI
             }
 
             return false;
+        }
+
+        #endregion
+
+        void TTip(in string label, in string tooltip)
+        {
+            if (string.IsNullOrEmpty(tooltip))
+                GUILayout.Label(label, GUILayout.Width(labelWidth));
+            else
+                GUILayout.Label(new GUIContent(label, tooltip), GUILayout.Width(labelWidth));
         }
     }
 }
