@@ -6,6 +6,15 @@ namespace Nothke.ProtoGUI
 {
     public abstract class WindowGUI : GameWindow
     {
+        // Overridable fields:
+        [HideInInspector] public Rect windowRect = new Rect(360, 20, 250, 0);
+        protected bool draggable = true;
+        protected float labelWidth = 100;
+        protected float sliderNumberWidth = 60;
+
+        // Properties
+        public override Rect Rect => windowRect;
+
         public override bool Enabled
         {
             get { return enabled; }
@@ -25,6 +34,7 @@ namespace Nothke.ProtoGUI
         }
 
         int id;
+        string windowTooltip;
 
         private void Awake()
         {
@@ -46,12 +56,6 @@ namespace Nothke.ProtoGUI
             }
         }
 
-        [HideInInspector]
-        public Rect windowRect = new Rect(360, 20, 250, 0);
-        public override Rect Rect => windowRect;
-
-        string windowTooltip;
-
         void WindowBase(int id)
         {
             Window();
@@ -62,6 +66,8 @@ namespace Nothke.ProtoGUI
             if (Event.current.type == EventType.Repaint)
                 windowTooltip = GUI.tooltip;
         }
+
+        // Extensions
 
         protected abstract void Window();
 
@@ -77,11 +83,6 @@ namespace Nothke.ProtoGUI
                 windowRect.height = 0;
             }
         }
-
-        protected bool draggable = true;
-
-        protected float labelWidth = 100;
-        protected float sliderNumberWidth = 60;
 
         #region Labels and fields
 
