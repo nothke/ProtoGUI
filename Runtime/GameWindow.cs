@@ -15,6 +15,16 @@ namespace Nothke.ProtoGUI
 
         static List<GameWindow> all;
 
+#if UNITY_2019_3_OR_NEWER
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void DomainReload()
+        {
+            if (all != null) all.Clear();
+            all = null;
+            areAllHidden = false;
+        }
+#endif
+
         public void OnEnable()
         {
             if (all == null) all = new List<GameWindow>();
