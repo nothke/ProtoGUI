@@ -45,6 +45,12 @@ namespace Nothke.ProtoGUI
         {
             GUI.skin = skin;
 
+            // Clamp to screen edges
+            if (windowRect.x < 0) windowRect.x = 0;
+            if (windowRect.y < 10) windowRect.y = 0;
+            if (windowRect.xMax > Screen.width) windowRect.x = Screen.width - windowRect.width;
+            if (windowRect.y > Screen.height - 35) windowRect.y = Screen.height - 35;
+
             windowRect = GUILayout.Window(id, windowRect, WindowBase, WindowLabel);
 
             if (!string.IsNullOrEmpty(windowTooltip))
@@ -80,8 +86,13 @@ namespace Nothke.ProtoGUI
             if (clicked)
             {
                 value = !value;
-                windowRect.height = 0;
+                RefreshHeight();
             }
+        }
+
+        public void RefreshHeight()
+        {
+            windowRect.height = 0;
         }
 
         #region Labels and fields
@@ -132,6 +143,21 @@ namespace Nothke.ProtoGUI
             GUILayout.Label(label, GUILayout.Width(labelWidth));
             float prevValue = value;
             if (float.TryParse(GUILayout.TextField(value.ToString()), out float newValue))
+                value = newValue;
+            else value = prevValue;
+
+            GUILayout.EndHorizontal();
+
+            return value;
+        }
+
+        protected int IntField(string label, int value)
+        {
+            GUILayout.BeginHorizontal();
+
+            GUILayout.Label(label, GUILayout.Width(labelWidth));
+            int prevValue = value;
+            if (int.TryParse(GUILayout.TextField(value.ToString()), out int newValue))
                 value = newValue;
             else value = prevValue;
 
