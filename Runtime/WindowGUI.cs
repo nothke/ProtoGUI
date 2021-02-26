@@ -43,8 +43,9 @@ namespace Nothke.ProtoGUI
 
         protected virtual void OnGUI()
         {
+            var originalSkin = GUI.skin;
             GUI.skin = skin;
-
+			
             // Clamp to screen edges
             if (windowRect.x < 0) windowRect.x = 0;
             if (windowRect.y < 10) windowRect.y = 0;
@@ -60,6 +61,9 @@ namespace Nothke.ProtoGUI
                 //mouse -= windowRect.position;
                 GUI.Label(new Rect(50, Screen.height - 80, 1000, 1000), windowTooltip);
             }
+			
+			// Assign original skin back to make sure other GUI elements do not use ProtoGUISkin
+			GUI.skin = originalSkin;
         }
 
         void WindowBase(int id)
